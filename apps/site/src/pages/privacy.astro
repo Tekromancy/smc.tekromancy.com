@@ -115,7 +115,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <ul class="space-y-2 list-disc list-inside" style="color: var(--color-text-secondary);">
           <li><strong>Local Contact & Group Schedules:</strong> When you define customized rules for phone numbers or groups, this information is stored locally in an encrypted Room SQLite database on your device's private application storage. Never synchronized to external servers.</li>
           <li><strong>Screened Call History:</strong> When an incoming call is screened, the application records a timestamp, caller number, rule matched, and applied action into your local on-device audit history.</li>
-          <li><strong>Zero Mobile App Telemetry:</strong> The Android application itself does not collect personal identity or call audio.</li>
+          <li><strong>Free vs. Pro App Telemetry:</strong>
+            <ul class="ml-6 mt-1 space-y-1 list-circle">
+              <li><strong>Silent Mode Control (Free):</strong> Uses Google Firebase Analytics and Google Mobile Ads solely to support maintenance and show non-intrusive banners. Requires standard internet/ad ID permissions for ad display. Call rules and logs remain 100% on-device.</li>
+              <li><strong>Silent Mode Control Pro:</strong> 100% ad-free and zero telemetry. Contains no analytics or advertising SDKs and requests no internet permission in its manifest. Operates completely offline.</li>
+            </ul>
+          </li>
           <li><strong>Website Analytics & Advertising:</strong> The public marketing website (<code>smc.tekromancy.com</code>) may use standard privacy-respecting website analytics (Google Analytics 4) to monitor aggregate page views and traffic sources, and Google AdSense/AdMob to serve sponsored content. Users may disable cookies or use browser ad blockers without affecting website functionality.</li>
           <li><strong>No Data Sales:</strong> We do not sell, rent, license, or disclose user data to data brokers or third parties under any circumstances.</li>
         </ul>

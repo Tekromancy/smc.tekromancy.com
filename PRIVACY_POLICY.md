@@ -43,9 +43,14 @@ Silent Mode Control requests and utilizes only the minimum system capabilities r
 - When an incoming call is screened, the application records a timestamp, incoming phone number, resolution rule, and the resulting action (e.g. Silenced, Vibrated, Allowed, Blocked) to your local on-device audit history.
 - This audit log is stored locally only to provide you with visibility into call screening decisions.
 
-### C. Zero Mobile App Telemetry & Third-Party Sharing
-- **No Remote Servers:** We do not operate remote servers that collect, store, or process user phone calls or contacts.
-- **No Mobile Analytics SDKs:** Neither mobile application contains Google Firebase, Crashlytics, Mixpanel, or invasive tracker SDKs.
+### C. App Analytics & Advertising (Free vs Pro Differences)
+- **Silent Mode Control (Free Edition):**
+  - Uses Google Firebase Analytics and Google Mobile Ads (AdMob) to support development and display non-intrusive banner promotions.
+  - Requires standard network permissions (`INTERNET`, `ACCESS_NETWORK_STATE`, and Google Advertising ID `AD_ID`) solely for ad delivery and aggregate crash/usage statistics.
+  - Call screening rules, contact schedules, and screened call audit logs remain strictly on-device and are never uploaded or transmitted.
+- **Silent Mode Control Pro (Paid Edition):**
+  - **100% Ad-Free and Zero Telemetry:** The Pro edition contains zero advertising SDKs, zero analytics trackers, and zero crash reporters.
+  - Does **NOT** declare `android.permission.INTERNET` in its manifest. The Pro app operates completely offline.
 - **Website Analytics & Advertising:** The public website (`https://smc.tekromancy.com`) may use standard Google Analytics (GA4) and Google AdSense/AdMob to measure site traffic and display advertising. You may freely use ad-blockers or privacy extensions when visiting the website.
 - **No Data Selling:** We do not sell, rent, license, or disclose user data to data brokers, advertisers, or third parties under any circumstances.
 
