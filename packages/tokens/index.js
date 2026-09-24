@@ -11,7 +11,7 @@ export const BRAND = {
   domain: 'smc.tekromancy.com',
   playStoreFreeUrl: 'https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrol',
   playStoreProUrl: 'https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrolpro',
-  currentVersion: '1.0.1',
+  currentVersion: '1.0.2',
 };
 
 
