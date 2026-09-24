@@ -59,12 +59,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <header class="sticky top-0 z-50 backdrop-blur-md border-b" style="background-color: rgba(var(--color-surface), 0.85); border-color: var(--color-border);">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <a href="/" class="flex items-center space-x-3 group">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white shadow-md transition-transform group-hover:scale-105" style="background: linear-gradient(135deg, #9333ea, #6b21a8);">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-            </svg>
-          </div>
+          <img src="/icons/app-logo.svg" alt="Silent Mode Control Logo" class="w-10 h-10 rounded-xl shadow-md transition-transform group-hover:scale-105" />
           <div>
             <div class="font-bold text-base tracking-tight flex items-center gap-1.5" style="color: var(--color-text-primary);">
               Silent Mode Control
@@ -129,9 +124,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div class="md:col-span-2 space-y-3">
             <div class="flex items-center space-x-2.5">
-              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-white text-sm" style="background-color: var(--color-primary);">
-                S
-              </div>
+              <img src="/icons/app-logo.svg" alt="Silent Mode Control Logo" class="w-8 h-8 rounded-lg shadow-sm" />
               <span class="font-bold text-lg" style="color: var(--color-text-primary);">Silent Mode Control</span>
             </div>
             <p class="text-sm max-w-sm" style="color: var(--color-text-secondary);">
