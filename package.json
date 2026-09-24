@@ -1,0 +1,12 @@
+{
+  "name": "silentmodecontrol-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@12.5.1",
+  "scripts": {
+    "dev": "pnpm --filter @silentmodecontrol/site dev",
+    "build": "pnpm --filter @silentmodecontrol/site build",
+    "preview": "pnpm --filter @silentmodecontrol/site preview"
+  }
+}
+

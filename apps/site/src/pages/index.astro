@@ -1,0 +1,472 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const recentPosts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden pt-16 sm:pt-24 pb-20 border-b" style="border-color: var(--color-border); background: radial-gradient(circle at 50% 0%, rgba(147, 51, 234, 0.15) 0%, transparent 70%);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8 border shadow-sm" style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-primary);">
+        <span class="w-2 h-2 rounded-full animate-pulse" style="background-color: var(--color-primary);"></span>
+        Native Android Telecom Call Screening
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-6" style="color: var(--color-text-primary);">
+        Take Absolute Control Over When Your Phone <span class="bg-gradient-to-r from-purple-400 via-purple-300 to-indigo-300 bg-clip-text text-transparent">Rings or Silences</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style="color: var(--color-text-secondary);">
+        Silent Mode Control empowers you with granular ringer, vibration, and mute schedules for individual numbers and contact groups. <strong>100% on-device processing. Zero tracking.</strong>
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <a
+          href="https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrol"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto px-8 py-4 rounded-2xl font-extrabold text-sm uppercase tracking-wider text-white shadow-xl transition-all hover:scale-105 hover:opacity-95 flex items-center justify-center gap-3"
+          style="background: linear-gradient(135deg, #9333ea, #6b21a8);"
+        >
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M3.609 1.814L13.792 12 3.61 22.186a1.99 1.99 0 0 1-.61-.92L3 2.734c0-.36.09-.68.609-.92zm11.597 11.597l2.87 2.87-12.7 7.28 9.83-10.15zm0-2.822L5.376.439l12.7 7.28-2.87 2.87zm1.414 1.411l3.52 2.02c.86.49.86 1.3 0 1.79l-3.52 2.02-2.43-2.43 2.43-2.4v-1z"/>
+          </svg>
+          <span>Download Free Edition</span>
+        </a>
+
+        <a
+          href="https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrolpro"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-sm tracking-wider border transition-all hover:scale-105 flex items-center justify-center gap-2"
+          style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-text-primary);"
+        >
+          <span class="text-purple-400">★</span>
+          <span>Get Silent Mode Control Pro</span>
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-6 border-t text-xs font-semibold" style="border-color: var(--color-border); color: var(--color-text-secondary);">
+        <div class="flex items-center justify-center gap-1.5">
+          <span class="text-green-400">✓</span> Android 10+ Compatible
+        </div>
+        <div class="flex items-center justify-center gap-1.5">
+          <span class="text-green-400">✓</span> 100% On-Device Only
+        </div>
+        <div class="flex items-center justify-center gap-1.5">
+          <span class="text-green-400">✓</span> Zero Cloud Trackers
+        </div>
+        <div class="flex items-center justify-center gap-1.5">
+          <span class="text-green-400">✓</span> Overnight Schedules
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive 24-Hour Graphical Timeline Showcase -->
+  <section id="timeline" class="py-20 border-b" style="border-color: var(--color-border); background-color: var(--color-surface);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <h2 class="text-xs font-extrabold uppercase tracking-widest mb-3" style="color: var(--color-primary);">
+          Visual Schedule Engine
+        </h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4" style="color: var(--color-text-primary);">
+          The 24-Hour Graphical Schedule Timeline
+        </h3>
+        <p class="text-base" style="color: var(--color-text-secondary);">
+          Never wonder what mode your phone is in. Silent Mode Control renders an intuitive 24-hour timeline bar for any contact, group, or day of the week.
+        </p>
+      </div>
+
+      <!-- Mock Timeline Interactive Component -->
+      <div class="p-6 sm:p-8 rounded-3xl border shadow-xl max-w-4xl mx-auto" style="background-color: var(--color-surface-elevated); border-color: var(--color-border);">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b" style="border-color: var(--color-border);">
+          <div>
+            <div class="font-bold text-lg" style="color: var(--color-text-primary);">Daily Schedule: Weekdays (Mon - Fri)</div>
+            <div class="text-xs" style="color: var(--color-text-secondary);">Simulated active contact: Family & Emergency VIPs</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-ping"></span>
+            <span class="text-xs font-mono font-bold" style="color: var(--color-text-primary);">14:35 Current Time</span>
+          </div>
+        </div>
+
+        <!-- 24-Hour Bar -->
+        <div class="relative w-full h-12 rounded-xl overflow-hidden flex shadow-inner border" style="border-color: var(--color-border);">
+          <!-- 00:00 - 07:00 Mute -->
+          <div class="h-full flex items-center justify-center text-[11px] font-bold text-white transition-opacity hover:opacity-90 cursor-help" style="width: 29.1%; background-color: #9333ea;" title="00:00 - 07:00: Silent / Mute">
+            Silent (Night)
+          </div>
+          <!-- 07:00 - 09:00 Vibrate -->
+          <div class="h-full flex items-center justify-center text-[11px] font-bold text-white transition-opacity hover:opacity-90 cursor-help" style="width: 8.3%; background-color: #ea580c;" title="07:00 - 09:00: Vibrate Only">
+            Vibrate
+          </div>
+          <!-- 09:00 - 18:00 Ring & Vibrate -->
+          <div class="h-full flex items-center justify-center text-[11px] font-bold text-white transition-opacity hover:opacity-90 cursor-help" style="width: 37.5%; background-color: #16a34a;" title="09:00 - 18:00: Ring & Vibrate (Work Hours)">
+            Ring & Vibrate (Day)
+          </div>
+          <!-- 18:00 - 22:00 Ring Only -->
+          <div class="h-full flex items-center justify-center text-[11px] font-bold text-white transition-opacity hover:opacity-90 cursor-help" style="width: 16.7%; background-color: #2563eb;" title="18:00 - 22:00: Ring Only (Evening)">
+            Ring
+          </div>
+          <!-- 22:00 - 24:00 Mute -->
+          <div class="h-full flex items-center justify-center text-[11px] font-bold text-white transition-opacity hover:opacity-90 cursor-help" style="width: 8.4%; background-color: #9333ea;" title="22:00 - 24:00: Silent / Mute">
+            Mute
+          </div>
+        </div>
+
+        <!-- 24-Hour Markers -->
+        <div class="flex justify-between text-[11px] font-mono mt-2" style="color: var(--color-text-secondary);">
+          <span>00:00</span>
+          <span>04:00</span>
+          <span>08:00</span>
+          <span>12:00</span>
+          <span>16:00</span>
+          <span>20:00</span>
+          <span>24:00</span>
+        </div>
+
+        <!-- Timeline Mode Legend -->
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-8 pt-6 border-t" style="border-color: var(--color-border);">
+          <div class="flex items-center gap-2 text-xs font-semibold" style="color: var(--color-text-primary);">
+            <span class="w-3 h-3 rounded-full bg-green-600"></span>
+            <span>Ring & Vibrate</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs font-semibold" style="color: var(--color-text-primary);">
+            <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+            <span>Ring Only</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs font-semibold" style="color: var(--color-text-primary);">
+            <span class="w-3 h-3 rounded-full bg-orange-600"></span>
+            <span>Vibrate Only</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs font-semibold" style="color: var(--color-text-primary);">
+            <span class="w-3 h-3 rounded-full bg-purple-600"></span>
+            <span>Silent / Mute</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs font-semibold" style="color: var(--color-text-primary);">
+            <span class="w-3 h-3 rounded-full bg-red-600"></span>
+            <span>Block / Reject</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features Grid -->
+  <section id="features" class="py-24 border-b" style="border-color: var(--color-border);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-xs font-extrabold uppercase tracking-widest mb-3" style="color: var(--color-primary);">
+          Engineered for Android
+        </h2>
+        <h3 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4" style="color: var(--color-text-primary);">
+          Precision Control for Busy Lives
+        </h3>
+        <p class="text-base" style="color: var(--color-text-secondary);">
+          Everything you need to orchestrate incoming calls without unwanted distractions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="p-8 rounded-3xl border transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col justify-between" style="background-color: var(--color-surface); border-color: var(--color-border);">
+          <div>
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 font-bold text-xl text-white shadow" style="background: linear-gradient(135deg, #9333ea, #7e22ce);">
+              ⚡
+            </div>
+            <h4 class="text-xl font-bold mb-3" style="color: var(--color-text-primary);">Individual Number Precedence</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">
+              Individual contact schedules always override group rules. Give VIPs or doctors personal bypass schedules regardless of what group they belong to.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t text-xs font-semibold" style="border-color: var(--color-border); color: var(--color-primary);">
+            Zero Rule Conflicts
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="p-8 rounded-3xl border transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col justify-between" style="background-color: var(--color-surface); border-color: var(--color-border);">
+          <div>
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 font-bold text-xl text-white shadow" style="background: linear-gradient(135deg, #2563eb, #1d4ed8);">
+              👥
+            </div>
+            <h4 class="text-xl font-bold mb-3" style="color: var(--color-text-primary);">Smart Contact Groups</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">
+              Organize phone numbers into Family, Work, School, or Contractor groups. Configure a shared schedule rule once, and apply it to every member instantly.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t text-xs font-semibold" style="border-color: var(--color-border); color: var(--color-primary);">
+            Effortless Bulk Management
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="p-8 rounded-3xl border transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col justify-between" style="background-color: var(--color-surface); border-color: var(--color-border);">
+          <div>
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 font-bold text-xl text-white shadow" style="background: linear-gradient(135deg, #16a34a, #15803d);">
+              🛡️
+            </div>
+            <h4 class="text-xl font-bold mb-3" style="color: var(--color-text-primary);">Telecom Call Screening</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">
+              Leverages official Android 10+ Telecom CallScreeningService. Runs only during incoming calls with zero background battery consumption.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t text-xs font-semibold" style="border-color: var(--color-border); color: var(--color-primary);">
+            Native OS Performance
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="p-8 rounded-3xl border transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col justify-between" style="background-color: var(--color-surface); border-color: var(--color-border);">
+          <div>
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 font-bold text-xl text-white shadow" style="background: linear-gradient(135deg, #ea580c, #c2410c);">
+              🧪
+            </div>
+            <h4 class="text-xl font-bold mb-3" style="color: var(--color-text-primary);">Live Rule Simulator</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">
+              Test any number against any simulated date and time. Watch the real-time decision path trace through individual overrides, group policies, and default fallbacks.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t text-xs font-semibold" style="border-color: var(--color-border); color: var(--color-primary);">
+            Complete Confidence Before Calls
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="p-8 rounded-3xl border transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col justify-between" style="background-color: var(--color-surface); border-color: var(--color-border);">
+          <div>
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 font-bold text-xl text-white shadow" style="background: linear-gradient(135deg, #7c3aed, #5b21b6);">
+              🔒
+            </div>
+            <h4 class="text-xl font-bold mb-3" style="color: var(--color-text-primary);">100% Privacy by Design</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">
+              No remote servers. No user accounts. Zero analytics SDKs. Your contact numbers, schedules, and screening logs never leave your phone.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t text-xs font-semibold" style="border-color: var(--color-border); color: var(--color-primary);">
+            Zero Cloud Leakage
+          </div>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="p-8 rounded-3xl border transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col justify-between" style="background-color: var(--color-surface); border-color: var(--color-border);">
+          <div>
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 font-bold text-xl text-white shadow" style="background: linear-gradient(135deg, #dc2626, #b91c1c);">
+              📋
+            </div>
+            <h4 class="text-xl font-bold mb-3" style="color: var(--color-text-primary);">Screened Call Audit Trail</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">
+              Review a transparent history of all screened calls with timestamps and exact resolution reasons. Purge records whenever you choose.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t text-xs font-semibold" style="border-color: var(--color-border); color: var(--color-primary);">
+            Full Accountability
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section: Free vs Pro -->
+  <section id="compare" class="py-24 border-b" style="border-color: var(--color-border); background-color: var(--color-surface);">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-xs font-extrabold uppercase tracking-widest mb-3" style="color: var(--color-primary);">
+          Transparent Pricing
+        </h2>
+        <h3 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4" style="color: var(--color-text-primary);">
+          Choose Your Edition
+        </h3>
+        <p class="text-base" style="color: var(--color-text-secondary);">
+          Both editions include the full rule engine. Choose between our free supported version or go 100% ad-free with Pro.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <!-- Free Tier Card -->
+        <div class="p-8 sm:p-10 rounded-3xl border flex flex-col justify-between" style="background-color: var(--color-surface-elevated); border-color: var(--color-border);">
+          <div>
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border" style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-text-secondary);">
+              Standard Edition
+            </div>
+            <h4 class="text-2xl sm:text-3xl font-bold mb-2" style="color: var(--color-text-primary);">Silent Mode Control</h4>
+            <p class="text-sm mb-6" style="color: var(--color-text-secondary);">
+              Full-featured call scheduling with non-intrusive house promo banners.
+            </p>
+            <div class="text-4xl font-extrabold mb-8" style="color: var(--color-text-primary);">
+              Free <span class="text-xs font-normal" style="color: var(--color-text-muted);">forever</span>
+            </div>
+
+            <ul class="space-y-3 text-sm mb-8" style="color: var(--color-text-secondary);">
+              <li class="flex items-center gap-2">
+                <span class="text-green-500 font-bold">✓</span> Full Schedule & Rule Engine
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500 font-bold">✓</span> Individual Number Overrides
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500 font-bold">✓</span> Contact Groups (Family, Work, VIPs)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500 font-bold">✓</span> 24-Hour Graphical Timeline Bar
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500 font-bold">✓</span> Rule Simulator & Audit Trail
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500 font-bold">✓</span> 100% On-Device Privacy
+              </li>
+              <li class="flex items-center gap-2" style="color: var(--color-text-muted);">
+                <span>•</span> Non-intrusive Pro Upgrade Banner
+              </li>
+            </ul>
+          </div>
+
+          <a
+            href="https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrol"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-center border transition-all hover:scale-[1.02]"
+            style="border-color: var(--color-border-strong); color: var(--color-primary); background-color: var(--color-surface);"
+          >
+            Download Free
+          </a>
+        </div>
+
+        <!-- Paid Pro Tier Card -->
+        <div class="p-8 sm:p-10 rounded-3xl border-2 shadow-2xl relative flex flex-col justify-between" style="background-color: var(--color-surface-elevated); border-color: var(--color-primary);">
+          <div class="absolute -top-3.5 right-8 px-3.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-md" style="background-color: var(--color-primary);">
+            Most Popular
+          </div>
+
+          <div>
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 text-white" style="background-color: var(--color-primary);">
+              Pro Edition
+            </div>
+            <h4 class="text-2xl sm:text-3xl font-bold mb-2" style="color: var(--color-text-primary);">Silent Mode Control Pro</h4>
+            <p class="text-sm mb-6" style="color: var(--color-text-secondary);">
+              100% ad-free experience, exclusive Pro badge, and ongoing updates.
+            </p>
+            <div class="text-4xl font-extrabold mb-8" style="color: var(--color-text-primary);">
+              $2.99 <span class="text-xs font-normal" style="color: var(--color-text-muted);">one-time purchase</span>
+            </div>
+
+            <ul class="space-y-3 text-sm mb-8" style="color: var(--color-text-primary);">
+              <li class="flex items-center gap-2">
+                <span class="text-green-500 font-bold">✓</span> <strong>Everything in Free</strong>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-purple-400 font-bold">★</span> <strong>100% Ad-Free (Zero Banners)</strong>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-purple-400 font-bold">★</span> <strong>Exclusive Pro Edition Badge</strong>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-purple-400 font-bold">★</span> <strong>Direct Support for Independent Dev</strong>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500 font-bold">✓</span> No Subscriptions or Recurring Fees
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500 font-bold">✓</span> Works Fully Offline
+              </li>
+            </ul>
+          </div>
+
+          <a
+            href="https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrolpro"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-white shadow-lg transition-all hover:scale-[1.02]"
+            style="background: linear-gradient(135deg, #9333ea, #6b21a8);"
+          >
+            Get Pro on Google Play
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News & Release Updates -->
+  <section class="py-24 border-b" style="border-color: var(--color-border);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
+        <div>
+          <h2 class="text-xs font-extrabold uppercase tracking-widest mb-3" style="color: var(--color-primary);">
+            From the Blog
+          </h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight" style="color: var(--color-text-primary);">
+            Latest News & Guides
+          </h3>
+        </div>
+        <a href="/blog" class="text-xs font-bold uppercase tracking-wider hover:underline mt-4 sm:mt-0" style="color: var(--color-primary);">
+          View All Articles &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {recentPosts.map((post) => (
+          <article class="p-6 rounded-2xl border transition-all hover:scale-[1.02] flex flex-col justify-between relative group" style="background-color: var(--color-surface); border-color: var(--color-border);">
+            <div>
+              <div class="text-xs mb-2 font-mono" style="color: var(--color-text-muted);">
+                {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </div>
+              <h4 class="text-lg font-bold mb-2 transition-colors group-hover:text-purple-400" style="color: var(--color-text-primary);">
+                <a href={`/blog/${post.id}`} class="focus:outline-none">
+                  <span class="absolute inset-0" aria-hidden="true" />
+                  {post.data.title}
+                </a>
+              </h4>
+              <p class="text-xs leading-relaxed line-clamp-3" style="color: var(--color-text-secondary);">
+                {post.data.description}
+              </p>
+            </div>
+            <div class="mt-6 pt-3 border-t text-xs font-bold inline-flex items-center gap-1" style="border-color: var(--color-border); color: var(--color-primary);">
+              Read More &rarr;
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="py-20 text-center" style="background: radial-gradient(circle at 50% 100%, rgba(147, 51, 234, 0.12) 0%, transparent 60%);">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4" style="color: var(--color-text-primary);">
+        Ready to Master Your Incoming Calls?
+      </h3>
+      <p class="text-base sm:text-lg mb-8" style="color: var(--color-text-secondary);">
+        Download Silent Mode Control today and experience personalized, privacy-first call screening on Android.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrol"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white shadow-lg transition-transform hover:scale-105"
+          style="background: linear-gradient(135deg, #9333ea, #6b21a8);"
+        >
+          Download Free on Google Play
+        </a>
+        <a
+          href="/privacy"
+          class="px-6 py-3.5 rounded-xl font-semibold text-xs tracking-wider border transition-colors hover:opacity-80"
+          style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-text-primary);"
+        >
+          Read Privacy Policy
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

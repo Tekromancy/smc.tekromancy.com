@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout
+  title={`${post.data.title} | Silent Mode Control`}
+  description={post.data.description}
+>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-24">
+    <div class="mb-8">
+      <a href="/blog" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider mb-6 hover:underline" style="color: var(--color-primary);">
+        &larr; Back to all updates
+      </a>
+
+      <div class="flex flex-wrap items-center gap-2 text-xs mb-3" style="color: var(--color-text-muted);">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </time>
+        <span>•</span>
+        <span>By {post.data.author}</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-4" style="color: var(--color-text-primary);">
+        {post.data.title}
+      </h1>
+
+      <p class="text-base sm:text-lg leading-relaxed mb-6" style="color: var(--color-text-secondary);">
+        {post.data.description}
+      </p>
+
+      <div class="flex flex-wrap gap-2 pt-4 border-t" style="border-color: var(--color-border);">
+        {post.data.tags.map((tag) => (
+          <span class="text-xs px-2.5 py-1 rounded-md font-medium border" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-text-secondary);">
+            #{tag}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Article Content with Markdown formatting -->
+    <div class="prose max-w-none pt-6 border-t leading-relaxed space-y-6 text-sm sm:text-base" style="border-color: var(--color-border); color: var(--color-text-primary);">
+      <Content />
+    </div>
+
+    <!-- Footer call to action -->
+    <div class="mt-16 p-8 rounded-2xl border text-center" style="background-color: var(--color-surface); border-color: var(--color-border);">
+      <h3 class="text-xl font-bold mb-2" style="color: var(--color-text-primary);">Try Silent Mode Control Today</h3>
+      <p class="text-sm max-w-md mx-auto mb-6" style="color: var(--color-text-secondary);">
+        Enjoy personalized call screening and scheduling with total privacy on Android 10+.
+      </p>
+      <a
+        href="https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrol"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white shadow-lg transition-transform hover:scale-105"
+        style="background: linear-gradient(135deg, #9333ea, #7e22ce);"
+      >
+        Download Free on Google Play
+      </a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  /* Markdown Content Styling adhering to tokens */
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    color: var(--color-text-primary);
+    font-weight: 800;
+    margin-top: 1.8em;
+    margin-bottom: 0.6em;
+    letter-spacing: -0.02em;
+  }
+  .prose h2 { font-size: 1.5rem; }
+  .prose h3 { font-size: 1.25rem; }
+  .prose p {
+    color: var(--color-text-primary);
+    line-height: 1.75;
+    margin-bottom: 1.25em;
+  }
+  .prose ul, .prose ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.25em;
+    color: var(--color-text-primary);
+  }
+  .prose li {
+    margin-bottom: 0.4em;
+  }
+  .prose a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2.5em 0;
+  }
+  .prose code {
+    background-color: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.85em;
+    color: var(--color-primary);
+  }
+  .prose pre {
+    background-color: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 16px;
+    overflow-x: auto;
+    margin: 1.5em 0;
+  }
+  .prose blockquote {
+    border-left: 4px solid var(--color-primary);
+    padding-left: 16px;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin: 1.5em 0;
+  }
+</style>

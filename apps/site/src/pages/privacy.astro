@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy | Silent Mode Control"
+  description="Privacy Policy for Silent Mode Control and Silent Mode Control Pro. 100% on-device data processing, zero third-party tracking."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 pb-24">
+    <!-- Header -->
+    <div class="border-b pb-8 mb-10" style="border-color: var(--color-border);">
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full text-white" style="background-color: var(--color-primary);">
+          Official Policy
+        </span>
+        <span class="text-xs font-medium px-3 py-1 rounded-full border" style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-text-secondary);">
+          Effective: September 24, 2026
+        </span>
+        <a href="/PRIVACY_POLICY.md" target="_blank" class="text-xs font-semibold hover:underline ml-auto" style="color: var(--color-primary);">
+          View Raw Markdown &darr;
+        </a>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3" style="color: var(--color-text-primary);">
+        Privacy Policy
+      </h1>
+      <p class="text-base sm:text-lg" style="color: var(--color-text-secondary);">
+        Silent Mode Control & Silent Mode Control Pro by <strong>Tekromancy</strong>
+      </p>
+
+      <div class="flex flex-wrap gap-2 pt-4">
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-md border" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-primary);">
+          ✓ 100% On-Device Processing
+        </span>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-md border" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-primary);">
+          ✓ Zero Cloud Servers
+        </span>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-md border" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-primary);">
+          ✓ Zero Third-Party Ad Networks
+        </span>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-md border" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-primary);">
+          ✓ Google Play Compliant
+        </span>
+      </div>
+    </div>
+
+    <!-- Policy Content Body -->
+    <div class="space-y-10 text-sm sm:text-base leading-relaxed" style="color: var(--color-text-primary);">
+      <!-- Section 1 -->
+      <section class="space-y-3">
+        <h2 class="text-2xl font-bold tracking-tight" style="color: var(--color-text-primary);">
+          1. Introduction & Core Philosophy
+        </h2>
+        <p style="color: var(--color-text-secondary);">
+          Tekromancy ("we", "us", or "our") develops <strong>Silent Mode Control</strong> (Free) and <strong>Silent Mode Control Pro</strong> (Paid) with a fundamental <strong>privacy-first, on-device architecture</strong>.
+        </p>
+        <p style="color: var(--color-text-secondary);">
+          We believe your phone calls, contact list, and personal schedules are strictly private. Both versions of Silent Mode Control are engineered to function <strong>without external web servers, without cloud databases, and without remote telemetry or tracking services</strong>. All data processed by the application remains on your physical device.
+        </p>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold tracking-tight" style="color: var(--color-text-primary);">
+          2. Permissions & Data Access
+        </h2>
+        <p style="color: var(--color-text-secondary);">
+          Silent Mode Control requests and utilizes only the minimum system capabilities required to provide call scheduling and screening functionality:
+        </p>
+
+        <div class="overflow-x-auto rounded-xl border" style="border-color: var(--color-border); background-color: var(--color-surface);">
+          <table class="w-full text-left text-sm">
+            <thead class="border-b" style="border-color: var(--color-border); background-color: var(--color-surface-elevated);">
+              <tr>
+                <th class="p-4 font-bold" style="color: var(--color-text-primary);">Capability / Permission</th>
+                <th class="p-4 font-bold" style="color: var(--color-text-primary);">Technical Purpose</th>
+                <th class="p-4 font-bold" style="color: var(--color-text-primary);">Data Storage & Handling</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y" style="border-color: var(--color-border);">
+              <tr>
+                <td class="p-4 font-semibold font-mono text-xs" style="color: var(--color-primary);">RoleManager.ROLE_CALL_SCREENING</td>
+                <td class="p-4 text-xs sm:text-sm" style="color: var(--color-text-secondary);">Enables the Android Telecom subsystem to deliver incoming phone calls to the app's CallScreeningService to determine if the call should ring, vibrate, or mute.</td>
+                <td class="p-4 text-xs sm:text-sm" style="color: var(--color-text-secondary);">Evaluated purely in volatile memory. Logged only to local SQLite Room DB on device.</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold font-mono text-xs" style="color: var(--color-primary);">android.permission.VIBRATE</td>
+                <td class="p-4 text-xs sm:text-sm" style="color: var(--color-text-secondary);">Triggers auxiliary phone vibration patterns for contacts configured with "Vibrate Only" or "Ring & Vibrate".</td>
+                <td class="p-4 text-xs sm:text-sm" style="color: var(--color-text-secondary);">Device hardware only.</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold font-mono text-xs" style="color: var(--color-primary);">android.permission.POST_NOTIFICATIONS</td>
+                <td class="p-4 text-xs sm:text-sm" style="color: var(--color-text-secondary);">Permits optional non-intrusive system notifications regarding screened calls or service status on Android 13+.</td>
+                <td class="p-4 text-xs sm:text-sm" style="color: var(--color-text-secondary);">Device notification tray only.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="p-4 rounded-xl border" style="background-color: rgba(34, 197, 94, 0.08); border-color: rgba(34, 197, 94, 0.3);">
+          <div class="font-bold text-sm mb-1 text-green-500">
+            Permission Minimization Compliance
+          </div>
+          <p class="text-xs sm:text-sm" style="color: var(--color-text-secondary);">
+            In strict accordance with Google Play's Permission Minimization and Sensitive Data Policies, Silent Mode Control <strong>does NOT</strong> request broad <code class="px-1.5 py-0.5 rounded bg-black/20 font-mono text-xs">READ_CALL_LOG</code>, <code class="px-1.5 py-0.5 rounded bg-black/20 font-mono text-xs">READ_PHONE_STATE</code>, or <code class="px-1.5 py-0.5 rounded bg-black/20 font-mono text-xs">READ_CONTACTS</code> permissions. The app operates exclusively via the official Android Telecom Call Screening API.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="space-y-3">
+        <h2 class="text-2xl font-bold tracking-tight" style="color: var(--color-text-primary);">
+          3. How Data Is Handled, Stored, and Shared
+        </h2>
+        <ul class="space-y-2 list-disc list-inside" style="color: var(--color-text-secondary);">
+          <li><strong>Local Contact & Group Schedules:</strong> When you define customized rules for phone numbers or groups, this information is stored locally in an encrypted Room SQLite database on your device's private application storage. Never synchronized to external servers.</li>
+          <li><strong>Screened Call History:</strong> When an incoming call is screened, the application records a timestamp, caller number, rule matched, and applied action into your local on-device audit history.</li>
+          <li><strong>Zero Cloud Servers:</strong> We do not operate remote servers that collect, store, or process user data.</li>
+          <li><strong>Zero Third-Party Trackers & Ads:</strong> Neither version contains Google Firebase, Crashlytics, Mixpanel, or third-party ad networks (AdMob, Unity, AppLovin). The Free edition features only an internal, static in-house promotion to upgrade to the Pro edition. No Advertising IDs (AAID) are accessed.</li>
+          <li><strong>No Data Sales:</strong> We do not sell, rent, license, or disclose user data to data brokers or third parties under any circumstances.</li>
+        </ul>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="space-y-3">
+        <h2 class="text-2xl font-bold tracking-tight" style="color: var(--color-text-primary);">
+          4. User Control & Data Deletion (Google Play Compliance)
+        </h2>
+        <p style="color: var(--color-text-secondary);">
+          You have full, permanent control over all data stored within the app:
+        </p>
+        <ol class="space-y-2 list-decimal list-inside" style="color: var(--color-text-secondary);">
+          <li><strong>In-App History Erasure:</strong> Open the app, tap the <strong>Info (About & Privacy)</strong> icon on the Dashboard, and click <strong>Clear Screened Call History</strong>.</li>
+          <li><strong>Rule & Number Deletion:</strong> Any contact number, group, or schedule rule can be removed at any time from the Contacts or Groups screens.</li>
+          <li><strong>Complete Device Deletion:</strong> Clear app storage via Android <em>Settings &gt; Apps &gt; Silent Mode Control &gt; Storage & Cache &gt; Clear Storage</em>, or uninstall the app. All local databases are permanently erased immediately.</li>
+        </ol>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="space-y-3">
+        <h2 class="text-2xl font-bold tracking-tight" style="color: var(--color-text-primary);">
+          5. Children's Privacy
+        </h2>
+        <p style="color: var(--color-text-secondary);">
+          Silent Mode Control is intended for general audiences (aged 18 and older). We do not knowingly collect, process, or solicit personal data from children under the age of 13, adhering to COPPA and Google Play Families Policies.
+        </p>
+      </section>
+
+      <!-- Section 6 -->
+      <section class="space-y-3">
+        <h2 class="text-2xl font-bold tracking-tight" style="color: var(--color-text-primary);">
+          6. Contact Us
+        </h2>
+        <p style="color: var(--color-text-secondary);">
+          If you have any questions, feedback, or concerns regarding this Privacy Policy, please contact our team:
+        </p>
+        <div class="p-6 rounded-2xl border" style="background-color: var(--color-surface); border-color: var(--color-border);">
+          <div class="font-bold text-base mb-1" style="color: var(--color-text-primary);">Tekromancy Software</div>
+          <div class="text-sm mb-1" style="color: var(--color-text-secondary);">Email: <a href="mailto:support@tekromancy.com" class="hover:underline" style="color: var(--color-primary);">support@tekromancy.com</a></div>
+          <div class="text-sm" style="color: var(--color-text-secondary);">Website: <a href="https://tekromancy.com" class="hover:underline" style="color: var(--color-primary);">https://tekromancy.com</a></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* ==============================================================================
+   Tekromancy Design System Tokens (Inspired by github.com/tekromancy/blog)
+   ============================================================================== */
+
+:root, [data-mode="light"] {
+  --color-primary: #9333ea;
+  --color-primary-hover: #7e22ce;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f3e8ff;
+  --color-secondary-foreground: #581c87;
+  --color-accent: #e9d5ff;
+  --color-accent-foreground: #581c87;
+  --color-background: #faf5ff;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #f8f0ff;
+  --color-text-primary: #2e1065;
+  --color-text-secondary: #581c87;
+  --color-text-muted: #7e22ce;
+  --color-border: #e9d5ff;
+  --color-border-strong: #c084fc;
+  
+  /* Telecom Call Mode Tokens */
+  --color-mode-ring: #16a34a;
+  --color-mode-vibrate: #ea580c;
+  --color-mode-silent: #9333ea;
+  --color-mode-block: #dc2626;
+
+  --shadow-sm: 0 1px 3px 0 rgba(147, 51, 234, 0.08);
+  --shadow-md: 0 4px 14px 0 rgba(147, 51, 234, 0.12);
+  --shadow-lg: 0 10px 25px -5px rgba(147, 51, 234, 0.15);
+}
+
+[data-mode="dark"] {
+  --color-primary: #a855f7;
+  --color-primary-hover: #c084fc;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #2e1065;
+  --color-secondary-foreground: #f3e8ff;
+  --color-accent: #3b0764;
+  --color-accent-foreground: #f3e8ff;
+  --color-background: #000000; /* OLED Pure Black matching tekromancy/blog */
+  --color-surface: #0e0a12;
+  --color-surface-elevated: #181120;
+  --color-text-primary: #f5f3ff;
+  --color-text-secondary: #d8b4fe;
+  --color-text-muted: #a855f7;
+  --color-border: #281938;
+  --color-border-strong: #9333ea;
+
+  /* Telecom Call Mode Tokens */
+  --color-mode-ring: #22c55e;
+  --color-mode-vibrate: #f97316;
+  --color-mode-silent: #a855f7;
+  --color-mode-block: #ef4444;
+
+  --shadow-sm: 0 1px 3px 0 rgba(168, 85, 247, 0.15);
+  --shadow-md: 0 4px 14px 0 rgba(168, 85, 247, 0.25);
+  --shadow-lg: 0 10px 30px -5px rgba(168, 85, 247, 0.35);
+}
+
+html {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Global token transitions */
+* {
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+              color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
