@@ -43,10 +43,10 @@ Silent Mode Control requests and utilizes only the minimum system capabilities r
 - When an incoming call is screened, the application records a timestamp, incoming phone number, resolution rule, and the resulting action (e.g. Silenced, Vibrated, Allowed, Blocked) to your local on-device audit history.
 - This audit log is stored locally only to provide you with visibility into call screening decisions.
 
-### C. Zero Third-Party Sharing & Zero Cloud Telemetry
-- **No Remote Servers:** We do not operate remote servers that collect, store, or process user data.
-- **No Analytics SDKs:** Neither version includes Google Firebase, Crashlytics, Mixpanel, AppsFlyer, or any external analytics tracking tools.
-- **No Third-Party Ad Networks:** Neither version contains third-party advertising SDKs (e.g., Google AdMob, Unity, AppLovin). The Free edition features only an internal, static in-house promotion to upgrade to the Pro edition. No Advertising IDs (AAID) are collected or accessed.
+### C. Zero Mobile App Telemetry & Third-Party Sharing
+- **No Remote Servers:** We do not operate remote servers that collect, store, or process user phone calls or contacts.
+- **No Mobile Analytics SDKs:** Neither mobile application contains Google Firebase, Crashlytics, Mixpanel, or invasive tracker SDKs.
+- **Website Analytics & Advertising:** The public website (`https://smc.tekromancy.com`) may use standard Google Analytics (GA4) and Google AdSense/AdMob to measure site traffic and display advertising. You may freely use ad-blockers or privacy extensions when visiting the website.
 - **No Data Selling:** We do not sell, rent, license, or disclose user data to data brokers, advertisers, or third parties under any circumstances.
 
 ---
