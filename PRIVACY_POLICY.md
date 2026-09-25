@@ -5,13 +5,13 @@
 **Developer:** Tekromancy  
 **Applications Covered:**
 - **Silent Mode Control** (Package: `com.tekromancy.silentmodecontrol`)
-- **Silent Mode Control Pro** (Package: `com.tekromancy.silentmodecontrolpro`)
+- **Silent Mode Control Pro** (Package: `com.tekromancy.silentmodecontrolpro` — Coming Soon)
 
 
 ---
 
 ## 1. Introduction & Core Philosophy
-Tekromancy ("we", "us", or "our") develops **Silent Mode Control** and **Silent Mode Control Pro** with a fundamental **privacy-first, on-device architecture**.
+Tekromancy ("we", "us", or "our") develops **Silent Mode Control** and **Silent Mode Control Pro** (Coming Soon) with a fundamental **privacy-first, on-device architecture**.
 
 We believe your phone calls, contact list, and personal schedules are strictly private. Both versions of Silent Mode Control are designed to function **without external web servers, without cloud databases, and without remote telemetry or tracking services**. All data processed by the application remains on your physical device.
 

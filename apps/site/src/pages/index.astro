@@ -62,14 +62,13 @@ const recentPosts = (await getCollection('blog'))
         </a>
 
         <a
-          href="https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrolpro"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#compare"
           class="w-full sm:w-auto px-7 py-4 rounded-2xl font-bold text-sm tracking-wider border transition-all hover:scale-105 flex items-center justify-center gap-2"
           style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-text-primary);"
         >
           <span class="text-purple-400">★</span>
           <span>Pro Edition</span>
+          <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full border border-purple-500/40 text-purple-300 bg-purple-500/10">Coming Soon</span>
         </a>
       </div>
 
@@ -307,26 +306,31 @@ const recentPosts = (await getCollection('blog'))
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <h2 class="text-xs font-extrabold uppercase tracking-widest mb-3" style="color: var(--color-primary);">
-          Transparent Pricing
+          Editions & Availability
         </h2>
         <h3 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4" style="color: var(--color-text-primary);">
           Choose Your Edition
         </h3>
         <p class="text-base" style="color: var(--color-text-secondary);">
-          Both editions include the full rule engine. Choose between our free supported version or go 100% ad-free with Pro.
+          Both editions share our complete on-device rule engine. We are currently recruiting testers for the <strong>Free Closed Beta</strong> on Google Play; the ad-free <strong>Pro Edition is coming soon</strong> following our test period!
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
         <!-- Free Tier Card -->
-        <div class="p-8 sm:p-10 rounded-3xl border flex flex-col justify-between" style="background-color: var(--color-surface-elevated); border-color: var(--color-border);">
+        <div class="p-8 sm:p-10 rounded-3xl border-2 shadow-xl flex flex-col justify-between relative" style="background-color: var(--color-surface-elevated); border-color: #eab308;">
+          <div class="absolute -top-3.5 right-8 px-3.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-black shadow-md flex items-center gap-1.5" style="background: linear-gradient(135deg, #fef08a, #eab308);">
+            <span class="w-1.5 h-1.5 rounded-full bg-black animate-ping"></span>
+            <span>Now Testing</span>
+          </div>
+
           <div>
             <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border" style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-text-secondary);">
-              Standard Edition
+              Free Edition
             </div>
             <h4 class="text-2xl sm:text-3xl font-bold mb-2" style="color: var(--color-text-primary);">Silent Mode Control</h4>
             <p class="text-sm mb-6" style="color: var(--color-text-secondary);">
-              Full-featured call scheduling with non-intrusive house promo banners.
+              Full-featured call scheduling with non-intrusive house promo banners. Currently in active Google Play closed testing.
             </p>
             <div class="text-4xl font-extrabold mb-8" style="color: var(--color-text-primary);">
               Free <span class="text-xs font-normal" style="color: var(--color-text-muted);">forever</span>
@@ -357,36 +361,47 @@ const recentPosts = (await getCollection('blog'))
             </ul>
           </div>
 
-          <a
-            href="https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrol"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-center border transition-all hover:scale-[1.02]"
-            style="border-color: var(--color-border-strong); color: var(--color-primary); background-color: var(--color-surface);"
-          >
-            Download Free
-          </a>
+          <div class="space-y-2.5">
+            <a
+              href="https://play.google.com/apps/testing/com.tekromancy.silentmodecontrol"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider text-center text-black shadow-lg transition-all hover:scale-[1.02] flex items-center justify-center gap-2 border border-yellow-400/80"
+              style="background: linear-gradient(135deg, #fef08a, #eab308);"
+            >
+              <span>⚡ Join Closed Beta (Free)</span>
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrol"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-center border transition-all hover:scale-[1.01] block"
+              style="border-color: var(--color-border-strong); color: var(--color-text-secondary); background-color: var(--color-surface);"
+            >
+              View on Google Play
+            </a>
+          </div>
         </div>
 
         <!-- Paid Pro Tier Card -->
-        <div class="p-8 sm:p-10 rounded-3xl border-2 shadow-2xl relative flex flex-col justify-between" style="background-color: var(--color-surface-elevated); border-color: var(--color-primary);">
-          <div class="absolute -top-3.5 right-8 px-3.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-white shadow-md" style="background-color: var(--color-primary);">
-            Most Popular
+        <div class="p-8 sm:p-10 rounded-3xl border relative flex flex-col justify-between" style="background-color: var(--color-surface-elevated); border-color: var(--color-border-strong);">
+          <div class="absolute -top-3.5 right-8 px-3.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider text-purple-200 shadow-md border border-purple-500/50" style="background-color: #581c87;">
+            Coming Soon
           </div>
 
           <div>
             <div class="flex items-center justify-between mb-4">
-              <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white" style="background-color: var(--color-primary);">
-                Pro Edition
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-purple-200 border border-purple-500/40 bg-purple-950/60">
+                <span>★</span> Pro Edition (Coming Soon)
               </div>
-              <img src="/icons/app-logo-pro.svg" alt="Pro Icon" class="w-10 h-10 rounded-xl shadow-lg border border-yellow-500/40" />
+              <img src="/icons/app-logo-pro.svg" alt="Pro Icon" class="w-10 h-10 rounded-xl shadow-lg border border-yellow-500/40 opacity-80" />
             </div>
             <h4 class="text-2xl sm:text-3xl font-bold mb-2" style="color: var(--color-text-primary);">Silent Mode Control Pro</h4>
             <p class="text-sm mb-6" style="color: var(--color-text-secondary);">
-              100% ad-free experience, zero analytics SDKs, exclusive Pro badge, and one-time purchase.
+              100% ad-free experience, zero analytics SDKs, exclusive Pro badge, and one-time purchase. Will launch following the Free closed beta period.
             </p>
             <div class="text-4xl font-extrabold mb-8" style="color: var(--color-text-primary);">
-              $2.99 <span class="text-xs font-normal" style="color: var(--color-text-muted);">one-time purchase</span>
+              $2.99 <span class="text-xs font-normal" style="color: var(--color-text-muted);">one-time purchase • coming soon</span>
             </div>
 
             <ul class="space-y-3 text-sm mb-8" style="color: var(--color-text-primary);">
@@ -414,15 +429,23 @@ const recentPosts = (await getCollection('blog'))
             </ul>
           </div>
 
-          <a
-            href="https://play.google.com/store/apps/details?id=com.tekromancy.silentmodecontrolpro"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-white shadow-lg transition-all hover:scale-[1.02]"
-            style="background: linear-gradient(135deg, #9333ea, #6b21a8);"
-          >
-            Get Pro on Google Play
-          </a>
+          <div class="space-y-2.5">
+            <div
+              class="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-purple-300 border border-purple-500/40 flex items-center justify-center gap-2 cursor-default select-none"
+              style="background: rgba(147, 51, 234, 0.15);"
+            >
+              <span>★ Pro Edition Coming Soon</span>
+            </div>
+            <a
+              href="https://play.google.com/apps/testing/com.tekromancy.silentmodecontrol"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-center border transition-all hover:scale-[1.01] block"
+              style="border-color: rgba(234, 179, 8, 0.4); color: #facc15; background-color: rgba(234, 179, 8, 0.06);"
+            >
+              ⚡ Help Test Free Beta First
+            </a>
+          </div>
         </div>
       </div>
     </div>
