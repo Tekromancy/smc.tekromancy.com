@@ -1,0 +1,463 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Pre-compiled list of official & featured community themes with their smc-theme:v1 codes
+const featuredThemes = [
+  {
+    id: "obsidian-oled",
+    name: "Obsidian OLED",
+    author: "Tekromancy",
+    category: "OLED & Dark",
+    isDark: true,
+    description: "True pitch-black (#000000) pixels with stark white text for zero power emission on OLED displays.",
+    bg: "#000000",
+    card: "#0C0C0C",
+    border: "#262626",
+    text: "#FFFFFF",
+    muted: "#9CA3AF",
+    accent: "#10B981",
+    ring: "#059669",
+    code: "smc-theme:v1:eyJzY2hlbWEiOiJzbWMtdGhlbWUtdjEiLCJuYW1lIjoiT2JzaWRpYW4gT0xFRCIsImF1dGhvciI6IlRla3JvbWFuY3kiLCJkZXNjcmlwdGlvbiI6IlRydWUgcGl0Y2gtYmxhY2sgT0xFRCBkaXNwbGF5IiwiaXNEYXJrIjp0cnVlLCJiZyI6IiMwMDAwMDAiLCJjYXJkIjoiIzBDMEMwQyIsImJvcmRlciI6IiMyNjI2MjYiLCJ0ZXh0IjoiI0ZGRkZGRiIsIm11dGVkIjoiIzlDQTNBRiIsImFjY2VudCI6IiMxMEI5ODEiLCJyaW5nIjoiIzA1OTY2OSJ9"
+  },
+  {
+    id: "dark-crimson",
+    name: "Crimson Midnight",
+    author: "WinnegansFake",
+    category: "Night Vision",
+    isDark: true,
+    description: "Deep nocturnal maroon and soft burgundy red to preserve scotopic night vision and circadian rhythm.",
+    bg: "#140507",
+    card: "#220A0D",
+    border: "#4C1117",
+    text: "#FECDD3",
+    muted: "#FDA4AF",
+    accent: "#E11D48",
+    ring: "#FB7185",
+    code: "smc-theme:v1:eyJzY2hlbWEiOiJzbWMtdGhlbWUtdjEiLCJuYW1lIjoiQ3JpbXNvbiBNaWRuaWdodCIsImF1dGhvciI6Ildpbm5lZ2Fuc0Zha2UiLCJkZXNjcmlwdGlvbiI6Ik5vY3R1cm5hbCBuaWdodCB2aXNpb24gbWFyb29uIiwiaXNEYXJrIjp0cnVlLCJiZyI6IiMxNDA1MDciLCJjYXJkIjoiIzIyMEEwRCIsImJvcmRlciI6IiM0QzExMTciLCJ0ZXh0IjoiI0ZFQ0REM1siLCJtdXRlZCI6IiNGREE0QUYiLCJhY2NlbnQiOiIjRTExRDQ4IiwicmluZyI6IiNGQjcxODUifQ"
+  },
+  {
+    id: "neon-cyberpunk",
+    name: "Cyberpunk Neon",
+    author: "Tekromancy",
+    category: "Ambient & Neon",
+    isDark: true,
+    description: "Electrifying dark synthwave with hot neon cyan, electric purple, and high-energy contrasts.",
+    bg: "#0B0813",
+    card: "#161026",
+    border: "#3B2D5A",
+    text: "#F5F3FF",
+    muted: "#C4B5FD",
+    accent: "#06B6D4",
+    ring: "#A855F7",
+    code: "smc-theme:v1:eyJzY2hlbWEiOiJzbWMtdGhlbWUtdjEiLCJuYW1lIjoiQ3liZXJwdW5rIE5lb24iLCJhdXRob3IiOiJUZWtyb21hbmN5IiwiZGVzY3JpcHRpb24iOiJFbGVjdHJpZnlpbmcgZGFyayBzeW50aHdhdmUiLCJpc0RhcmsiOnRydWUsImJnIjoiIzBCMDgxMyIsImNhcmQiOiIjMTYxMDI2IiwiYm9yZGVyIjoiIzNCMkQ1QSIsInRleHQiOiIjRjVGM0ZGIiwibXV0ZWQiOiIjQzRCNUZEIiwiYWNjZW50IjoiIzA2QjZENCIlocaleIjoicmluZyIsInJpbmciOiIjQTg1NUY3In0"
+  },
+  {
+    id: "solarized-dark",
+    name: "Solarized Dark",
+    author: "Ethan Schoonover",
+    category: "Solarized & Gruvbox",
+    isDark: true,
+    description: "Canonical Solarized Dark: precise LAB color space palette with base03 and base0 text.",
+    bg: "#002B36",
+    card: "#073642",
+    border: "#0B4352",
+    text: "#839496",
+    muted: "#586E75",
+    accent: "#2AA198",
+    ring: "#B58900",
+    code: "smc-theme:v1:eyJzY2hlbWEiOiJzbWMtdGhlbWUtdjEiLCJuYW1lIjoiU29sYXJpemVkIERhcmsiLCJhdXRob3IiOiJFdGhhbiBTY2hvb25vdmVyIiwiZGVzY3JpcHRpb24iOiJDYW5vbmljYWwgU29sYXJpemVkIERhcmsiLCJpc0RhcmsiOnRydWUsImJnIjoiIzAwMkIzNiIsImNhcmQiOiIjMDczNjQyIiwiYm9yZGVyIjoiIzBCNDM1MiIsInRleHQiOiIjODM5NDk2IiwibXV0ZWQiOiIjNTg2RTc1IiwiYWNjZW50IjoiIzJBQTE5OCIsInJpbmciOiIjQjU4OTAwIn0"
+  },
+  {
+    id: "catppuccin-mocha",
+    name: "Catppuccin Mocha",
+    author: "Catppuccin Org",
+    category: "Catppuccin",
+    isDark: true,
+    description: "Catppuccin’s deep dark flavor: soothing pastel mauve accents with charcoal base.",
+    bg: "#1E1E2E",
+    card: "#181825",
+    border: "#313244",
+    text: "#CDD6F4",
+    muted: "#A6ADC8",
+    accent: "#CBA6F7",
+    ring: "#B4BEFE",
+    code: "smc-theme:v1:eyJzY2hlbWEiOiJzbWMtdGhlbWUtdjEiLCJuYW1lIjoiQ2F0cHB1Y2NpbiBNb2NoYSIsImF1dGhvciI6IkNhdHBwdWNjaW4iLCJkZXNjcmlwdGlvbiI6IlNvb3RoaW5nIHBhc3RlbCBtb2NoYSBmbGF2b3IiLCJpc0RhcmsiOnRydWUsImJnIjoiIzFFMUUyRSIsImNhcmQiOiIjMTgxODI1IiwiYm9yZGVyIjoiIzMxMzI0NCIsInRleHQiOiIjQ0RENkY0IiwibXV0ZWQiOiIjQTYwREM4IiwiYWNjZW50IjoiI0NCQTZGNyIsInJpbmciOiIjQjRCRUZFIn0"
+  },
+  {
+    id: "warm-parchment",
+    name: "Book Parchment",
+    author: "WinnegansFake",
+    category: "Light & Paper",
+    isDark: false,
+    description: "Subtle warm cream and antique paper tones that eliminate eye fatigue for daylight reading.",
+    bg: "#FBF7EE",
+    card: "#F4EDE0",
+    border: "#E2D5BE",
+    text: "#2C2416",
+    muted: "#786851",
+    accent: "#B45309",
+    ring: "#D97706",
+    code: "smc-theme:v1:eyJzY2hlbWEiOiJzbWMtdGhlbWUtdjEiLCJuYW1lIjoiQm9vayBQYXJjaG1lbnQiLCJhdXRob3IiOiJXaW5uZWdhbnNGYWtlIiwiZGVzY3JpcHRpb24iOiJXYXJtIGNyZWFtIGFuZCBhbnRpcXVlIHBhcGVyIiwiaXNEYXJrIjpmYWxzZSwiYmciOiIjRkJGN0VFIiwiY2FyZCI6IiNGNEVERTAiLCJib3JkZXIiOiIjRTJENUJFIiwidGV4dCI6IiMyQzI0MTYiLCJtdXRlZCI6IiM3ODY4NTEiLCJhY2NlbnQiOiIjQjQ1MzA5IiwicmluZyI6IiNEOTc3MDYifQ"
+  }
+];
+---
+
+<BaseLayout
+  title="Themes & Community Gallery | Silent Mode Control"
+  description="Discover, customize, and trade offline themes for Silent Mode Control. Browse OLED, night vision, cyberpunk, and pastel palettes, or generate your own portable theme code."
+>
+  <!-- Hero Section -->
+  <section class="relative pt-16 pb-12 border-b" style="border-color: var(--color-border); background: radial-gradient(circle at 50% 0%, rgba(147, 51, 234, 0.12) 0%, transparent 70%);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 border shadow-sm" style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-primary);">
+        <span class="w-2 h-2 rounded-full" style="background-color: var(--color-primary);"></span>
+        100% Offline • Zero Tracking • Portable Theme Codes
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-4" style="color: var(--color-text-primary);">
+        Themes & <span class="bg-gradient-to-r from-purple-400 via-purple-300 to-indigo-300 bg-clip-text text-transparent">Community Gallery</span>
+      </h1>
+
+      <p class="text-lg max-w-2xl mx-auto mb-8 leading-relaxed" style="color: var(--color-text-secondary);">
+        Personalize your Silent Mode Control app with high-contrast OLED, soothing nocturnal reds, and vibrant ambient neons. Export, trade, and import themes instantly with no cloud account required.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold" style="color: var(--color-text-muted);">
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          19+ Built-in Palettes
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          In-App Live Theme Studio
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          Universal <code>smc-theme:v1</code> Codes
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Gallery Grid -->
+  <section class="py-16 max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-2xl font-bold" style="color: var(--color-text-primary);">Featured & Curated Themes</h2>
+        <p class="text-sm" style="color: var(--color-text-secondary);">Click "Copy Theme Code" to import directly into your mobile app.</p>
+      </div>
+      <a href="#web-studio" class="text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-xl border hover:opacity-80 transition" style="border-color: var(--color-border); color: var(--color-primary); background-color: var(--color-surface-elevated);">
+        Open Web Studio ↓
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {featuredThemes.map((theme) => (
+        <div class="rounded-2xl border p-5 flex flex-col justify-between transition-all hover:shadow-xl hover:-translate-y-1" style="background-color: var(--color-surface); border-color: var(--color-border);">
+          <div>
+            <!-- Card Mockup Preview -->
+            <div class="rounded-xl p-4 mb-4 border relative overflow-hidden" style={`background-color: ${theme.bg}; border-color: ${theme.border};`}>
+              <div class="rounded-lg p-3 border mb-2" style={`background-color: ${theme.card}; border-color: ${theme.border};`}>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold" style={`color: ${theme.text};`}>{theme.name}</span>
+                  <span class="text-[9px] font-bold px-1.5 py-0.5 rounded" style={`background-color: ${theme.accent}22; color: ${theme.accent};`}>
+                    {theme.isDark ? "DARK" : "LIGHT"}
+                  </span>
+                </div>
+                <div class="text-[10px] mb-3" style={`color: ${theme.muted};`}>By {theme.author}</div>
+                <div class="flex gap-2">
+                  <span class="text-[10px] font-bold px-2 py-1 rounded" style={`background-color: ${theme.accent}; color: ${theme.isDark ? '#000' : '#fff'};`}>
+                    Active Rule
+                  </span>
+                  <span class="text-[10px] font-semibold px-2 py-1 rounded border" style={`border-color: ${theme.ring}; color: ${theme.ring};`}>
+                    VIP Group
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Header & Details -->
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-bold text-base" style="color: var(--color-text-primary);">{theme.name}</h3>
+              <span class="text-[10px] font-semibold px-2 py-0.5 rounded border" style="border-color: var(--color-border); color: var(--color-text-secondary); background-color: var(--color-surface-elevated);">
+                {theme.category}
+              </span>
+            </div>
+            <div class="text-xs font-medium mb-3" style="color: var(--color-primary);">By {theme.author}</div>
+            <p class="text-xs leading-relaxed mb-4" style="color: var(--color-text-secondary);">{theme.description}</p>
+          </div>
+
+          <div>
+            <!-- 4-Dot Color Swatch Preview -->
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-[11px] font-medium" style="color: var(--color-text-muted);">Palette:</span>
+              <div class="flex items-center gap-1.5">
+                <span class="w-4 h-4 rounded-full border border-white/20 shadow-sm" style={`background-color: ${theme.bg};`} title="Background"></span>
+                <span class="w-4 h-4 rounded-full border border-white/20 shadow-sm" style={`background-color: ${theme.card};`} title="Surface"></span>
+                <span class="w-4 h-4 rounded-full border border-white/20 shadow-sm" style={`background-color: ${theme.text};`} title="Text"></span>
+                <span class="w-4 h-4 rounded-full border border-white/20 shadow-sm" style={`background-color: ${theme.accent};`} title="Accent"></span>
+              </div>
+            </div>
+
+            <!-- Action Copy Button -->
+            <button
+              type="button"
+              class="theme-copy-btn w-full py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition hover:opacity-90 cursor-pointer text-white shadow"
+              style="background: linear-gradient(135deg, #9333ea, #6b21a8);"
+              data-code={theme.code}
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              <span>Copy Theme Code</span>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Web Theme Studio / Custom Theme Builder -->
+  <section id="web-studio" class="py-16 border-t" style="border-color: var(--color-border); background-color: var(--color-surface-elevated);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-extrabold mb-3" style="color: var(--color-text-primary);">Web Theme Studio</h2>
+        <p class="text-sm max-w-xl mx-auto" style="color: var(--color-text-secondary);">
+          Design your custom palette in your browser and generate a portable <code>smc-theme:v1</code> code ready to import on your Android device.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Controls -->
+        <div class="space-y-4 rounded-2xl border p-6" style="background-color: var(--color-surface); border-color: var(--color-border);">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider mb-1" style="color: var(--color-text-secondary);">Theme Name</label>
+            <input id="builder-name" type="text" value="Solar Samurai" class="w-full px-3 py-2 rounded-xl border text-sm" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-text-primary);" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider mb-1" style="color: var(--color-text-secondary);">Author Handle</label>
+            <input id="builder-author" type="text" value="You" class="w-full px-3 py-2 rounded-xl border text-sm" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-text-primary);" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider mb-1" style="color: var(--color-text-secondary);">Description</label>
+            <input id="builder-desc" type="text" value="Custom cyberpunk aesthetic" class="w-full px-3 py-2 rounded-xl border text-sm" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-text-primary);" />
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <div>
+              <label class="block text-[11px] font-semibold mb-1" style="color: var(--color-text-secondary);">Background</label>
+              <div class="flex items-center gap-2">
+                <input id="builder-bg" type="color" value="#0d0d11" class="w-8 h-8 rounded border cursor-pointer" />
+                <input id="builder-bg-hex" type="text" value="#0D0D11" class="w-20 text-xs px-2 py-1 rounded border uppercase" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-text-primary);" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold mb-1" style="color: var(--color-text-secondary);">Card / Surface</label>
+              <div class="flex items-center gap-2">
+                <input id="builder-card" type="color" value="#171720" class="w-8 h-8 rounded border cursor-pointer" />
+                <input id="builder-card-hex" type="text" value="#171720" class="w-20 text-xs px-2 py-1 rounded border uppercase" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-text-primary);" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold mb-1" style="color: var(--color-text-secondary);">Primary Text</label>
+              <div class="flex items-center gap-2">
+                <input id="builder-text" type="color" value="#f1f5f9" class="w-8 h-8 rounded border cursor-pointer" />
+                <input id="builder-text-hex" type="text" value="#F1F5F9" class="w-20 text-xs px-2 py-1 rounded border uppercase" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-text-primary);" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold mb-1" style="color: var(--color-text-secondary);">Primary Accent</label>
+              <div class="flex items-center gap-2">
+                <input id="builder-accent" type="color" value="#06b6d4" class="w-8 h-8 rounded border cursor-pointer" />
+                <input id="builder-accent-hex" type="text" value="#06B6D4" class="w-20 text-xs px-2 py-1 rounded border uppercase" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-text-primary);" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Preview & Export -->
+        <div class="space-y-4 rounded-2xl border p-6" style="background-color: var(--color-surface); border-color: var(--color-border);">
+          <h3 class="text-xs font-bold uppercase tracking-wider" style="color: var(--color-text-secondary);">Live Mockup Preview</h3>
+
+          <div id="studio-preview-box" class="rounded-xl p-5 border transition-all" style="background-color: #0D0D11; border-color: #282838;">
+            <div id="studio-card-box" class="rounded-lg p-4 border" style="background-color: #171720; border-color: #282838;">
+              <div class="flex items-center justify-between mb-2">
+                <span id="studio-preview-name" class="font-bold text-sm" style="color: #F1F5F9;">Solar Samurai</span>
+                <span id="studio-preview-tag" class="text-[9px] font-bold px-1.5 py-0.5 rounded" style="background-color: #06B6D422; color: #06B6D4;">DARK</span>
+              </div>
+              <div id="studio-preview-author" class="text-[11px] mb-3" style="color: #94A3B8;">By You</div>
+              <div class="flex gap-2">
+                <span id="studio-preview-btn" class="text-[11px] font-bold px-3 py-1.5 rounded" style="background-color: #06B6D4; color: #000;">
+                  Screening Active
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider mb-1" style="color: var(--color-text-secondary);">Generated Theme Code</label>
+            <textarea id="builder-output-code" readonly rows="3" class="w-full px-3 py-2 rounded-xl border text-[11px] font-mono select-all" style="background-color: var(--color-surface-elevated); border-color: var(--color-border); color: var(--color-text-primary);"></textarea>
+          </div>
+
+          <button
+            id="builder-copy-btn"
+            type="button"
+            class="w-full py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition hover:opacity-90 cursor-pointer text-white shadow"
+            style="background: linear-gradient(135deg, #9333ea, #6b21a8);"
+          >
+            <span>Copy Generated Code</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructions & How To Trade Themes -->
+  <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl font-bold mb-2" style="color: var(--color-text-primary);">How Theme Trading Works</h2>
+      <p class="text-sm" style="color: var(--color-text-secondary);">Simple, privacy-respecting offline sharing without cloud servers or telemetry.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="rounded-2xl border p-5 text-center" style="background-color: var(--color-surface); border-color: var(--color-border);">
+        <div class="w-10 h-10 rounded-full mx-auto mb-3 flex items-center justify-center font-bold text-white shadow" style="background-color: var(--color-primary);">1</div>
+        <h3 class="font-bold text-sm mb-1" style="color: var(--color-text-primary);">Create or Pick</h3>
+        <p class="text-xs leading-relaxed" style="color: var(--color-text-secondary);">Use the in-app Theme Creator on your phone or design a theme right here on the web.</p>
+      </div>
+
+      <div class="rounded-2xl border p-5 text-center" style="background-color: var(--color-surface); border-color: var(--color-border);">
+        <div class="w-10 h-10 rounded-full mx-auto mb-3 flex items-center justify-center font-bold text-white shadow" style="background-color: var(--color-primary);">2</div>
+        <h3 class="font-bold text-sm mb-1" style="color: var(--color-text-primary);">Share Offline</h3>
+        <p class="text-xs leading-relaxed" style="color: var(--color-text-secondary);">Tap "Share" to send your theme code to friends over WhatsApp, Signal, SMS, Discord, or email.</p>
+      </div>
+
+      <div class="rounded-2xl border p-5 text-center" style="background-color: var(--color-surface); border-color: var(--color-border);">
+        <div class="w-10 h-10 rounded-full mx-auto mb-3 flex items-center justify-center font-bold text-white shadow" style="background-color: var(--color-primary);">3</div>
+        <h3 class="font-bold text-sm mb-1" style="color: var(--color-text-primary);">Paste & Enjoy</h3>
+        <p class="text-xs leading-relaxed" style="color: var(--color-text-secondary);">Tap the Palette icon in the app, select "Import", and paste the code. It applies immediately!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Scripts for Copying & Live Web Studio -->
+  <script is:inline>
+    // Copy Theme Code Buttons in Gallery
+    document.querySelectorAll('.theme-copy-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const code = button.getAttribute('data-code');
+        if (code) {
+          navigator.clipboard.writeText(code).then(() => {
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<span>✓ Copied to Clipboard!</span>';
+            button.style.background = '#059669';
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.style.background = 'linear-gradient(135deg, #9333ea, #6b21a8)';
+            }, 2000);
+          });
+        }
+      });
+    });
+
+    // Web Studio Interactive Generator
+    const nameInput = document.getElementById('builder-name');
+    const authorInput = document.getElementById('builder-author');
+    const descInput = document.getElementById('builder-desc');
+    const bgPicker = document.getElementById('builder-bg');
+    const bgHex = document.getElementById('builder-bg-hex');
+    const cardPicker = document.getElementById('builder-card');
+    const cardHex = document.getElementById('builder-card-hex');
+    const textPicker = document.getElementById('builder-text');
+    const textHex = document.getElementById('builder-text-hex');
+    const accentPicker = document.getElementById('builder-accent');
+    const accentHex = document.getElementById('builder-accent-hex');
+
+    const outputCode = document.getElementById('builder-output-code');
+    const copyBuilderBtn = document.getElementById('builder-copy-btn');
+
+    const previewBox = document.getElementById('studio-preview-box');
+    const cardBox = document.getElementById('studio-card-box');
+    const previewName = document.getElementById('studio-preview-name');
+    const previewAuthor = document.getElementById('studio-preview-author');
+    const previewBtn = document.getElementById('studio-preview-btn');
+
+    function syncColor(picker, hexInput) {
+      picker.addEventListener('input', () => {
+        hexInput.value = picker.value.toUpperCase();
+        updateStudio();
+      });
+      hexInput.addEventListener('input', () => {
+        if (/^#[0-9A-Fa-f]{6}$/.test(hexInput.value)) {
+          picker.value = hexInput.value;
+          updateStudio();
+        }
+      });
+    }
+
+    syncColor(bgPicker, bgHex);
+    syncColor(cardPicker, cardHex);
+    syncColor(textPicker, textHex);
+    syncColor(accentPicker, accentHex);
+
+    [nameInput, authorInput, descInput].forEach(el => el.addEventListener('input', updateStudio));
+
+    function updateStudio() {
+      const name = nameInput.value.trim() || 'Untitled Theme';
+      const author = authorInput.value.trim() || 'You';
+      const desc = descInput.value.trim();
+      const bg = bgHex.value.toUpperCase();
+      const card = cardHex.value.toUpperCase();
+      const text = textHex.value.toUpperCase();
+      const accent = accentHex.value.toUpperCase();
+
+      // Update Preview Box
+      previewBox.style.backgroundColor = bg;
+      cardBox.style.backgroundColor = card;
+      previewName.style.color = text;
+      previewName.textContent = name;
+      previewAuthor.textContent = `By ${author}`;
+      previewBtn.style.backgroundColor = accent;
+
+      // Construct JSON
+      const payload = {
+        schema: "smc-theme-v1",
+        name: name,
+        author: author,
+        description: desc,
+        isDark: true,
+        bg: bg,
+        card: card,
+        border: "#282838",
+        text: text,
+        muted: "#94A3B8",
+        accent: accent,
+        ring: "#3B82F6"
+      };
+
+      const jsonStr = JSON.stringify(payload);
+      const base64 = btoa(jsonStr);
+      outputCode.value = `smc-theme:v1:${base64}`;
+    }
+
+    copyBuilderBtn.addEventListener('click', () => {
+      if (outputCode.value) {
+        navigator.clipboard.writeText(outputCode.value).then(() => {
+          const originalText = copyBuilderBtn.textContent;
+          copyBuilderBtn.textContent = '✓ Copied Theme Code!';
+          copyBuilderBtn.style.background = '#059669';
+          setTimeout(() => {
+            copyBuilderBtn.textContent = originalText;
+            copyBuilderBtn.style.background = 'linear-gradient(135deg, #9333ea, #6b21a8)';
+          }, 2000);
+        });
+      }
+    });
+
+    // Initialize Studio on load
+    updateStudio();
+  </script>
+</BaseLayout>
